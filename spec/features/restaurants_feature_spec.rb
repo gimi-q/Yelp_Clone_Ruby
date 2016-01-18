@@ -20,4 +20,15 @@ feature 'restaurants' do
       expect(page).not_to have_content 'No restaurants to see here'
     end
   end
+
+  context 'creating restaurants' do
+    scenario 'user fills out form, which displays new restaurant' do
+      visit '/restaurants'
+      click_link 'Add Restaurant'
+      fill_in 'Name', with: 'Pizza Hut'
+      click_button 'Create Restaurant'
+      expect(page).to have_content 'Pizza Hut'
+      expect(current_path).to eq '/restaurants'
+    end
+  end
 end
