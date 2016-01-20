@@ -36,4 +36,12 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
+
+  context 'when user not signed in' do
+    it 'should not allow a user to create restaurant' do
+      visit('/')
+      click_link 'Add Restaurant'
+      expect(current_path).to eq '/users/sign_in'
+    end
+  end
 end
