@@ -4,13 +4,10 @@ class Restaurant < ActiveRecord::Base
 
   has_many :reviews, dependent: :destroy
 
+  has_many :reviews,
+      -> { extending WithUserAssociationExtension },
+      dependent: :destroy
+
   validates :name, length: {minimum: 3}, uniqueness: true
 
-  # def valid_edit
-  #   if current_user.id == @restaurant.user_id
-  #     @restaurant = Restaurant.find(params[:id])
-  #   else
-  #     flash[:notice] = "Can only edit restaurant you have created"
-  #   end
-  # end
 end
