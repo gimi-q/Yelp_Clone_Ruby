@@ -44,4 +44,17 @@ feature "User can sign in and out" do
       expect(current_path).to eq '/users/sign_in'
     end
   end
-end
+
+  context 'user' do
+    it 'can only edit their own restaurant' do
+      visit('/')
+      sign_up
+      click_link 'Add Restaurant'
+      fill_in 'Name', with: 'Pizza Hut'
+      click_button 'Create Restaurant'
+      click_link 'Sign out'
+      sign_up2
+      expect(page).not_to have_link 'Edit Pizza Hut'
+    end
+  end
+ end

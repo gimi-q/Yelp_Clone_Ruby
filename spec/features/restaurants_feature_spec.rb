@@ -64,6 +64,7 @@ feature 'restaurants' do
     scenario 'let a user edit a restaurant' do
        visit '/restaurants'
        sign_up
+       create_restaurant
        click_link 'Edit'
        fill_in 'Name', with: 'Kentucky Fried Chicken'
        click_button 'Update Restaurant'
@@ -74,13 +75,13 @@ feature 'restaurants' do
 
   context 'deleting a restaurant' do
 
-    before {Restaurant.create name: 'KFC'}
 
     scenario 'removes a restaurant when a user clicks a delete link' do
       visit '/restaurants'
       sign_up
-      click_link 'Delete KFC'
-      expect(page).to have_content 'KFC deleted successfully'
+      create_restaurant
+      click_link 'Delete Pizza Hut'
+      expect(page).to have_content 'Pizza Hut deleted successfully'
     end
   end
 
