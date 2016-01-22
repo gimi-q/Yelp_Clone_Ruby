@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
 
   belongs_to :restaurant
-
+  has_many :endorsements
   belongs_to :user
 
   validates :rating, inclusion: (1..5)

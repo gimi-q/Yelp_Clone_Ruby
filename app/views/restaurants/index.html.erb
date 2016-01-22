@@ -24,6 +24,8 @@
     <% if restaurant.reviews.any? %>
       <ul>
         <% restaurant.reviews.each do |review| %>
+        <p><%= pluralize review.endorsements.count, 'endorsement' %></p>
+        <%= link_to "Endorse", new_review_endorsement_path(review.id) %>
           <li>
             <%= review.thoughts %>
             <strong>
