@@ -1,6 +1,4 @@
-module ReviewsHelper
-
-  require 'rails_helper'
+require 'rails_helper'
 
 describe ReviewsHelper, :type => :helper do
   context '#star_rating' do
@@ -8,5 +6,4 @@ describe ReviewsHelper, :type => :helper do
       expect(helper.star_rating('N/A')).to eq 'N/A'
     end
   end
-end
 end

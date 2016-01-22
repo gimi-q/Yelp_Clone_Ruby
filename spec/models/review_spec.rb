@@ -22,4 +22,5 @@ describe Review, :type => :model do
       expect(review.user).to eq user
     end
   end
+
 end

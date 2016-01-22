@@ -69,5 +69,17 @@ feature "User can sign in and out" do
       click_button 'Leave Review'
       expect(page).to have_content 'cannot review same restaurant twice'
     end
+
+    it 'can only  delete their own review' do
+      visit('/')
+      sign_up
+      create_restaurant
+      click_link 'Review Pizza Hut'
+      fill_in "Thoughts", with: "so so"
+      select '3', from: 'Rating'
+      click_link 'Sign out'
+      sign_up2
+      expect(page).to_not have_content 'Edit Pizza Hut'
+    end
   end
  end
