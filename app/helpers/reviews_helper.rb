@@ -1,12 +1,6 @@
 module ReviewsHelper
-
-  require 'rails_helper'
-
-describe ReviewsHelper, :type => :helper do
-  context '#star_rating' do
-    it 'does nothing for not a number' do
-      expect(helper.star_rating('N/A')).to eq 'N/A'
-    end
+  def star_rating(rating)
+    rating != 'N/A' ?  '★' * rating.round + ('☆' * (5-rating) ) : rating
   end
-end
+
 end

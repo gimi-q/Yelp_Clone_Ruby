@@ -26,4 +26,6 @@ describe 'reviews' do
     leave_review('Great', '5')
     expect(page).to have_content('Average rating: ★★★★☆')
   end
+
+  
 end
